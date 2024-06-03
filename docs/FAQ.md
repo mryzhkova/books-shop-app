@@ -14,9 +14,3 @@ cd client/services/books-info yarn start
 ```bash
 cd client/services/host yarn start
 ```
-
-## Функционал
-
-https://app-dot-books-shop-5230c.uc.r.appspot.com - приложение
-
-https://books-shop-5230c.uc.r.appspot.com/graphql - сервис, для получения данных

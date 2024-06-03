@@ -9,8 +9,6 @@ export const useHandleCart = (id: string) => {
     const [createCart, { data: crateCartData }] = useCreateCart(id);
     const [addToCart, { data: addToCartData }] = useAddToCart(id);
 
-    console.log(getCartData())
-
     const { cartId, currentBooks } = getCartData();
     const cartBook = currentBooks?.includes(id);
 
