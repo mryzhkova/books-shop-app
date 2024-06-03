@@ -1,0 +1,46 @@
+name: server ci/cd
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'server/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'server/**'
+jobs:
+  pipeline:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [ 18.19.0 ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install modules
+        run: yarn install --immutable
+        working-directory: server
+
+      - name: Lint server
+        run: yarn lint
+        working-directory: server
+
+      - name: Google Cloud Auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+
+      - name: Get secrets
+        run: gcloud secrets versions access latest --secret=${{ secrets.GCP_ENV_KEY }} > .env
+        working-directory: server
+
+      - name: Deploy to Google Cloud Storage
+        run: gcloud app deploy app.yaml --quiet
+        working-directory: server

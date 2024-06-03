@@ -1,0 +1,38 @@
+type Book {
+    id: ID
+    title: String
+    description: String
+    price: Float
+    author: String
+    lang: String
+    publisher: String
+    pubDate: String
+    cover: String!
+    coverBy: String
+    coverByEmail: String
+}
+
+type CartBook {
+    id: ID
+    count: Int
+    info: Book
+}
+
+type Cart {
+    id: ID
+    books: [CartBook]
+}
+
+type Query {
+    getAllBooks: [Book]
+    getBook(id: ID): Book
+    getCart(id: ID): Cart
+}
+
+type Mutation {
+    createCart(bookId: ID): Cart
+    removeCart(id: ID): String
+    addToCart(id: ID, bookId: ID): Cart
+    removeFromCart(id: ID, bookId: ID): Cart
+    addToCartMore(id: ID, bookId: ID, count: Int): Cart
+}
