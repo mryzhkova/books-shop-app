@@ -1,0 +1,11 @@
+{
+    "name": "client",
+    "version": "1.0.0",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "packages/*",
+        "services/*"
+    ],
+    "packageManager": "yarn@4.1.0"
+}

@@ -1,0 +1,42 @@
+name: packages-presets ci/cd
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'client/packages/presets/**'
+jobs:
+  build-and-publish:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [ 18.19.0 ]
+
+    permissions:
+        contents: read
+        packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Install modules
+        run: yarn install --immutable
+        working-directory: client/packages/presets
+
+      - name: Lint presets package
+        run: yarn lint
+        working-directory: client/packages/presets
+
+      - name: Build presets package
+        run: yarn build
+        working-directory: client/packages/presets
+
+      - name: Publish presets package to GitHub Packages
+        run: npm publish
+        working-directory: client/packages/presets
+
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

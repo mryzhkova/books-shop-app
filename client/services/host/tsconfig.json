@@ -1,0 +1,10 @@
+{
+    "extends": "@mryzhkova/packages-presets/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./build",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    }
+}

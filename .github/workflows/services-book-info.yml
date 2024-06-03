@@ -1,0 +1,43 @@
+name: services book-info ci/cd
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'client/services/book-info/**'
+jobs:
+  build-and-publish:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [ 18.19.0 ]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install modules
+        run: yarn install --immutable
+        working-directory: client/services/book-info
+
+      - name: Lint book-info app
+        run: yarn lint
+        working-directory: client/services/book-info
+
+      - name: Build book-info app
+        run: yarn build
+        working-directory: client/services/book-info
+
+      - name: Google Cloud Auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+
+      - name: Deploy to Google Cloud Storage
+        run: gcloud app deploy app.yaml --quiet
+        working-directory: client/services/book-info/gcloud-build
+
