@@ -1,38 +1,60 @@
 type Book {
-    id: ID
-    title: String
-    description: String
-    price: Float
-    author: String
-    lang: String
-    publisher: String
-    pubDate: String
-    cover: String!
-    coverBy: String
-    coverByEmail: String
+    id: ID!
+    title: String!
+    description: String!
+    price: Float!
+    author: String!
+    lang: String!
+    publisher: String!
+    pubDate: String!
+    cover: String
+    coverBy: String!
+    coverByEmail: String!
 }
 
 type CartBook {
-    id: ID
-    count: Int
-    info: Book
+    id: ID!
+    count: Int!
+    info: Book!
 }
 
 type Cart {
-    id: ID
-    books: [CartBook]
+    id: ID!
+    books: [CartBook]!
+    cost: Float!
+}
+
+type PayPalToken {
+    clientToken: String!
+    clientId: String!
+}
+
+input OrderInfo {
+    email: String!
+    name: String!
+    lastName: String!
+    country: String!
+    city: String!
+    address: String!
+    province: String
+    postalCode: String!
+    shippingNote: String
+    newsletter: Boolean
+    save: Boolean
 }
 
 type Query {
     getAllBooks: [Book]
-    getBook(id: ID): Book
-    getCart(id: ID): Cart
+    getBook(id: ID!): Book
+    getCart(id: ID!): Cart
+    generateClientToken: PayPalToken
 }
 
 type Mutation {
-    createCart(bookId: ID): Cart
-    removeCart(id: ID): String
-    addToCart(id: ID, bookId: ID): Cart
-    removeFromCart(id: ID, bookId: ID): Cart
-    addToCartMore(id: ID, bookId: ID, count: Int): Cart
+    createCart(bookId: ID!): Cart
+    addToCart(id: ID!, bookId: ID!): Cart
+    removeFromCart(id: ID!, bookId: ID!): Cart
+    addToCartMore(id: ID!, bookId: ID!, count: Int!): Cart
+    createOrder(cartId: ID!): String
+    captureOrder(orderId: ID!, cartId: ID!, orderInfo: OrderInfo!): String
 }

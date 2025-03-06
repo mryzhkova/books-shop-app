@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ListWrapper = styled.div`
+export const StyledList = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: center;

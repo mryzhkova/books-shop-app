@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledSVGIconProps } from './types';
+import { type StyledSVGIconProps } from './types';
 
 export const StyledIcon = styled.svg<StyledSVGIconProps>`
     & path {

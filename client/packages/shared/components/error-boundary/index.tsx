@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 type State = {
     hasError: boolean;
@@ -17,6 +17,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     }
 
     componentDidCatch(error: Error) {
+        // eslint-disable-next-line no-console
         console.error(error);
     }
 

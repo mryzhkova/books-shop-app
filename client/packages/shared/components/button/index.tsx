@@ -1,8 +1,8 @@
 import { StyledButton } from './styled';
-import { ButtonProps } from './types';
+import { type ButtonProps } from './types';
 
 export const Button = ({ children, view, block, ...props }: ButtonProps) => (
-    <StyledButton view={view} width={block ? '100%' : 'auto'} {...props}>
+    <StyledButton view={view} block={block} {...props}>
         {children}
     </StyledButton>
 );

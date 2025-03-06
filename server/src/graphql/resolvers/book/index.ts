@@ -1,4 +1,4 @@
-import { getBooksRef } from '../../../db/utils';
+import { getBooksRef } from '@/db/utils';
 
 export const bookResolver = {
     Query: {
@@ -10,9 +10,8 @@ export const bookResolver = {
                     id: doc.id,
                     ...doc.data(),
                 }));
-            } catch (e) {
-                console.log(e);
-                return e as Error;
+            } catch (error) {
+                return error;
             }
         },
         getBook: async (_: any, args: { id: string }) => {
@@ -23,9 +22,8 @@ export const bookResolver = {
                     id: doc.id,
                     ...doc.data(),
                 };
-            } catch (e) {
-                console.log(e);
-                return e as Error;
+            } catch (error) {
+                return error;
             }
         },
     },

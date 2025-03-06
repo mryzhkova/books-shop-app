@@ -8,14 +8,14 @@ export const StyledCard = styled.div`
     position: relative;
 `;
 
-export const CardImage = styled.div`
+export const StyledCardImage = styled.div`
     position: absolute;
     top: 15px;
     left: 70px;
     z-index: 1;
 `;
 
-export const CardInfo = styled.div`
+export const StyledCardInfo = styled.div`
     position: absolute;
     bottom: 0;
     height: 81px;
@@ -26,7 +26,7 @@ export const CardInfo = styled.div`
     `};
 `;
 
-export const LinkText = styled.div`
+export const StyledLinkText = styled.div`
     position: relative;
 `;
 

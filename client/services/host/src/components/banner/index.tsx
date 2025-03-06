@@ -3,19 +3,19 @@ import { Gap } from '@mryzhkova/packages-shared/components/gap';
 import LeftBannerImg from '@/assets/images/banner-left.svg';
 import RightBannerImg from '@/assets/images/banner-right.png';
 
-import { BannerWrapper, LeftBanner, RightBanner } from './styled';
+import { StyledBanner, StyledLeftBanner, StyledRightBanner } from './styled';
 
 export const Banner = () => (
     <>
         <Gap size='4xl' />
-        <BannerWrapper>
-            <LeftBanner>
+        <StyledBanner>
+            <StyledLeftBanner>
                 <LeftBannerImg />
-            </LeftBanner>
-            <RightBanner>
+            </StyledLeftBanner>
+            <StyledRightBanner>
                 <img src={RightBannerImg} alt='banner' />
-            </RightBanner>
-        </BannerWrapper>
+            </StyledRightBanner>
+        </StyledBanner>
         <Gap size='5xl' />
     </>
 );

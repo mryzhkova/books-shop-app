@@ -1,17 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { ErrorBoundary } from '@mryzhkova/packages-shared/components/error-boundary';
+import { cartRoutes } from '@mryzhkova/packages-shared/constants';
 
 import { CartApp } from '@/components/cart-app';
 
 const routes = [
     {
-        path: '/cart',
-        element: (
-            <ErrorBoundary fallback={<div>Cart Service Error</div>}>
-                <CartApp />
-            </ErrorBoundary>
-        ),
+        path: cartRoutes.cart,
+        element: <CartApp />,
     },
 ];
 

@@ -1,4 +1,4 @@
-import { Gap } from '../../styles/theme';
+import { type Gap } from "../../styles/theme";
 
 export type GapProps = {
     size: Gap;

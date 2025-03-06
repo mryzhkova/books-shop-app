@@ -1,6 +1,6 @@
-import { FC, SVGProps } from 'react';
+import { type FC, type SVGProps } from 'react';
 
-import { Color } from '../../styles/theme';
+import { type Color } from '../../styles/theme';
 
 export type SVGIconProps = {
     Icon: FC<SVGProps<SVGSVGElement>>;

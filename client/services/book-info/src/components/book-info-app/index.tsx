@@ -1,89 +1,57 @@
 import { useParams } from 'react-router-dom';
 
-import { useBookQuery } from '@mryzhkova/packages-shared/api/book';
-import { Gap } from '@mryzhkova/packages-shared/components/gap';
-import { Text } from '@mryzhkova/packages-shared/components/text';
+import { useBookQuery } from '@mryzhkova/packages-shared/apollo-client/book';
+import { ErrorBoundary } from '@mryzhkova/packages-shared/components/error-boundary';
+import { LoadWrapper } from '@mryzhkova/packages-shared/components/load-wrapper';
+import { PageError } from '@mryzhkova/packages-shared/components/page-error';
 
 import BannerImage from '@/assets/banner.png';
 
 import { BookDescription } from '../book-description';
 import { BookInfoCard } from '../book-info-card';
 
-import { BookInfoWrapper, StyledImage } from './styled';
+import { StyledBookInfo, StyledImage } from './styled';
 
 export const BookInfoApp = () => {
     const { id } = useParams();
 
-    const { data, loading, error } = useBookQuery(id);
-
+    const { data, loading, error, refetch } = useBookQuery(id || '');
     const book = data?.getBook;
 
-    if (loading) {
-        return (
-            <>
-                <Gap size='8xl' />
-                <Text tag='h3' size='6xl' align='center'>
-                    Loading...
-                </Text>
-                <Gap size='8xl' />
-            </>
-        );
-    }
-
-    if (error) {
-        return (
-            <>
-                <Gap size='8xl' />
-                <Text tag='h3' size='6xl' align='center'>
-                    Loading Error
-                </Text>
-                <Gap size='8xl' />
-            </>
-        );
-    }
-
-    if (!book) {
-        return null;
-    }
-
-    const {
-        title,
-        author,
-        lang,
-        publisher,
-        pubDate,
-        coverBy,
-        coverByEmail,
-        description,
-        id: bookId,
-    } = book;
-
     return (
-        <>
-            <Gap size='4xl' />
-            <BookInfoWrapper>
-                <div>
-                    <BookInfoCard
-                        id={bookId}
-                        author={author}
-                        title={title}
-                        lang={lang}
-                        publisher={publisher}
-                        pubDate={pubDate}
-                        coverBy={coverBy}
-                    />
-                    <BookDescription
-                        author={author}
-                        title={title}
-                        coverByEmail={coverByEmail}
-                        coverBy={coverBy}
-                        description={description}
-                    />
-                </div>
-                <StyledImage>
-                    <img src={BannerImage} alt='banner' />
-                </StyledImage>
-            </BookInfoWrapper>
-        </>
+        <ErrorBoundary fallback={<PageError message='Book Info Service Error' />}>
+            <LoadWrapper
+                loading={loading}
+                error={error}
+                message='Book info loading error'
+                onRetry={refetch}
+            >
+                {book && (
+                    <StyledBookInfo>
+                        <div>
+                            <BookInfoCard
+                                id={book.id}
+                                author={book.author}
+                                title={book.title}
+                                lang={book.lang}
+                                publisher={book.publisher}
+                                pubDate={book.pubDate}
+                                coverBy={book.coverBy}
+                            />
+                            <BookDescription
+                                author={book.author}
+                                title={book.title}
+                                coverByEmail={book.coverByEmail}
+                                coverBy={book.coverBy}
+                                description={book.description}
+                            />
+                        </div>
+                        <StyledImage>
+                            <img src={BannerImage} alt='banner' />
+                        </StyledImage>
+                    </StyledBookInfo>
+                )}
+            </LoadWrapper>
+        </ErrorBoundary>
     );
 };

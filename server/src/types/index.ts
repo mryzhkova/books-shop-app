@@ -21,4 +21,24 @@ export interface CartBook {
 export interface Cart {
     id: string;
     books: CartBook[];
+    cost: number;
+}
+
+export interface OrderInfo {
+    email: string;
+    name: string;
+    lastName: string;
+    country: string;
+    city: string;
+    address: string;
+    province?: string;
+    postalCode: string;
+    shippingNote?: string;
+    newsletter?: boolean;
+    save?: boolean;
+}
+
+export interface PayPalToken {
+    clientToken: string;
+    clientId: string;
 }

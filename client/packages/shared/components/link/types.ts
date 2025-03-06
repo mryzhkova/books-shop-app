@@ -1,16 +1,14 @@
-import { ReactNode, ElementType } from 'react';
+import { type ReactNode, type ElementType } from 'react';
 
-import { Color } from '../../styles/theme';
+import { type Color } from '../../styles/theme';
 
 export type LinkProps = {
     children: ReactNode;
     to: string;
     Component?: ElementType;
-    underline?: boolean;
     color?: Color;
+    underline?: boolean;
+    disabled?: boolean;
 };
 
-export type StyledLinkProps = {
-    underline?: string;
-    color: Color;
-};
+export type StyledLinkProps = Pick<LinkProps, 'underline' | 'color' | 'disabled'>;

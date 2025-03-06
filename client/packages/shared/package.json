@@ -1,6 +1,6 @@
 {
     "name": "@mryzhkova/packages-shared",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "license": "MIT",
     "types": "build/index.d.ts",
     "main": "build/index.js",
@@ -20,21 +20,28 @@
         "format": "prettier --write \"**/*.{ts,tsx,json}\""
     },
     "dependencies": {
+        "@mryzhkova/packages-presets": "^2.0.0"
+    },
+    "devDependencies": {
         "@apollo/client": "^3.9.6",
-        "@mryzhkova/packages-presets": "^1.0.0",
+        "@types/react": "^18.2.55",
+        "@types/react-dom": "^18.2.18",
+        "@types/styled-components": "^5.1.34",
+        "csstype": "^3.1.3",
+        "eslint": "^8.56.0",
+        "graphql": "^16.8.1",
+        "prettier": "^3.2.5",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "styled-components": "^6.1.8",
+        "typescript": "^5.3.3"
+    },
+    "peerDependencies": {
+        "@apollo/client": "^3.9.6",
         "graphql": "^16.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "styled-components": "^6.1.8"
-    },
-    "devDependencies": {
-        "@types/react": "^18.2.55",
-        "@types/react-dom": "^18.2.18",
-        "@types/styled-components": "^5.1.34",
-        "eslint": "^8.56.0",
-        "prettier": "^3.2.5",
-        "typescript": "^5.3.3",
-        "webpack": "^5.90.1"
     },
     "prettier": "@mryzhkova/packages-presets/.prettierrc.json",
     "eslintConfig": {

@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const CopyrightBackground = styled.div`
+export const StyledCopyrightBackground = styled.div`
     background-color: ${({ theme }) => theme.colors.lightSecondary};
 `;
 
-export const CopyrightContent = styled.div`
+export const StyledCopyrightContent = styled.div`
     margin: 0 auto;
     ${({ theme }) => css`
         max-width: ${`${theme.maxLayoutWidth}px`};

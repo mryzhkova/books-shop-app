@@ -1,6 +1,6 @@
 import { type ResolveOptions } from 'webpack';
 
-import { BuildOptions } from '../types';
+import { type BuildOptions } from '../types';
 
 export const getResolvers = ({ paths }: BuildOptions): ResolveOptions => ({
     extensions: ['.tsx', '.ts', '.js'],

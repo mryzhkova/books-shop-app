@@ -1,22 +1,14 @@
 import { Button } from '@mryzhkova/packages-shared/components/button';
+import { Divider } from '@mryzhkova/packages-shared/components/divider';
+import { Flex } from '@mryzhkova/packages-shared/components/flex';
 import { Gap } from '@mryzhkova/packages-shared/components/gap';
 import { Text } from '@mryzhkova/packages-shared/components/text';
 
 import CartItemImage from '@/assets/cart-item.png';
-import { CartLine } from '@/components/cart-line';
 import { useHandleCart } from '@/hooks/use-handle-cart';
 import { getBookTotal } from '@/utils/get-book-total';
 
-import {
-    ProductCell,
-    ProductInfo,
-    StyledCartItem,
-    ProductImage,
-    TotalCell,
-    PriceCell,
-    CountCell,
-    StyledCounter,
-} from './styled';
+import { StyledCartItem, StyledProductImage, StyledCounter } from './styled';
 
 type Props = {
     id: string;
@@ -40,61 +32,58 @@ export const CartItem = ({ title, price, count, cover, id }: Props) => {
     return (
         <>
             <StyledCartItem>
-                <ProductCell>
-                    <ProductImage src={cover || CartItemImage} alt='cart item image' />
-                    <ProductInfo>
+                <Flex>
+                    <StyledProductImage src={cover || CartItemImage} alt='cart item image' />
+                    <Gap size='4xl' direction='horizontal' />
+                    <Flex direction='column' align='flex-start'>
+                        <Gap size='2xl' />
                         <Text size='3xl'>{title}</Text>
                         <Gap size='m' />
                         <Button
-                            view='ghost'
+                            view='accent-text'
                             onClick={handleRemoveFromCart}
                             disabled={removeLoading}
                         >
-                            <Text size='l' weight='regular' color='accent' view='secondary'>
-                                Remove
-                            </Text>
+                            Remove
                         </Button>
-                    </ProductInfo>
-                </ProductCell>
-                <PriceCell>
+                        <Gap size='2xl' />
+                    </Flex>
+                </Flex>
+                <Flex align='center'>
                     <Text size='l' view='secondary'>
                         {`$ ${price}`}
                     </Text>
-                </PriceCell>
-                <CountCell>
+                </Flex>
+                <Flex align='center' justify='center'>
                     <StyledCounter>
                         <Button
-                            view='ghost'
+                            view='accent-text'
                             block
                             onClick={handleIncreaseCount}
                             disabled={updateLoading}
                         >
-                            <Text size='l' weight='regular' color='accent' view='secondary'>
-                                +
-                            </Text>
+                            +
                         </Button>
                         <Gap size='s' direction='horizontal' />
                         <Text view='secondary'>{count}</Text>
                         <Gap size='s' direction='horizontal' />
                         <Button
-                            view='ghost'
+                            view='accent-text'
                             block
                             disabled={count === 1 || updateLoading}
                             onClick={handleDecreaseCount}
                         >
-                            <Text size='l' weight='regular' color='accent' view='secondary'>
-                                -
-                            </Text>
+                            -
                         </Button>
                     </StyledCounter>
-                </CountCell>
-                <TotalCell>
+                </Flex>
+                <Flex align='center' justify='center'>
                     <Text size='l' view='secondary'>
                         {total}
                     </Text>
-                </TotalCell>
+                </Flex>
             </StyledCartItem>
-            <CartLine />
+            <Divider />
         </>
     );
 };

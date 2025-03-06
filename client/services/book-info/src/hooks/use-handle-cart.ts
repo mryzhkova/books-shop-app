@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { useAddToCart, useCreateCart } from '@mryzhkova/packages-shared/api/cart';
-import { Cart } from '@mryzhkova/packages-shared/types';
+import { useAddToCart, useCreateCart } from '@mryzhkova/packages-shared/apollo-client/cart';
+import { type Cart } from '@mryzhkova/packages-shared/apollo-client/cart/types';
 import { getCartData } from '@mryzhkova/packages-shared/utils/cart/get-cart-data';
 import { setCartData } from '@mryzhkova/packages-shared/utils/cart/set-cart-data';
 

@@ -1,5 +1,5 @@
 import { StyledLink } from './styled';
-import { LinkProps } from './types';
+import { type LinkProps } from './types';
 
 export const Link = ({
     children,
@@ -7,11 +7,13 @@ export const Link = ({
     to,
     Component = 'a',
     color = 'darkPrimary',
+    disabled,
 }: LinkProps) => (
     <StyledLink
         as={Component}
+        disabled={disabled}
         {...{ [typeof Component === 'string' ? 'href' : 'to']: to }}
-        underline={underline ? 'underline' : 'none'}
+        underline={underline}
         color={color}
     >
         {children}

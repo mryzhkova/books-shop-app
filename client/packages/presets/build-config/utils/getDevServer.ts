@@ -1,4 +1,4 @@
-import { BuildOptions } from '../types';
+import { type BuildOptions } from '../types';
 
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 

@@ -1,11 +1,12 @@
 import { Link } from '@mryzhkova/packages-shared/components/link';
 import { SVGIcon } from '@mryzhkova/packages-shared/components/svg-icon';
 import { Text } from '@mryzhkova/packages-shared/components/text';
+import { booksRoutes } from '@mryzhkova/packages-shared/constants';
 
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import BookCover from '@/assets/images/book-cover.svg';
 
-import { CardImage, CardInfo, LinkText, StyledCard, StyledIcon } from './styled';
+import { StyledCardImage, StyledCardInfo, StyledLinkText, StyledCard, StyledIcon } from './styled';
 
 type Props = {
     id: string;
@@ -16,19 +17,21 @@ type Props = {
 
 export const BookCard = ({ title, image, linkText, id }: Props) => (
     <StyledCard>
-        <CardImage>{image ? <img src={image} alt='book-cover' /> : <BookCover />}</CardImage>
-        <CardInfo>
+        <StyledCardImage>
+            {image ? <img src={image} alt='book-cover' /> : <BookCover />}
+        </StyledCardImage>
+        <StyledCardInfo>
             <Text>{title}</Text>
-            <Link to={`/books/${id}`}>
-                <LinkText>
+            <Link to={`${booksRoutes.books}/${id}`}>
+                <StyledLinkText>
                     <Text size='s' weight='light'>
                         {linkText}
                     </Text>
                     <StyledIcon>
                         <SVGIcon Icon={ArrowIcon} />
                     </StyledIcon>
-                </LinkText>
+                </StyledLinkText>
             </Link>
-        </CardInfo>
+        </StyledCardInfo>
     </StyledCard>
 );

@@ -1,4 +1,4 @@
-import { CartBook } from '../../types';
+import { type CartBook } from '../../apollo-client/cart/types';
 import { getEventBus } from '../event-bus';
 
 import { CART_KEY } from './constants';

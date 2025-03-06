@@ -28,12 +28,16 @@ export default (env: EnvVariables) => {
     });
 
     const isDev = env.mode === 'development';
+
     const bookInfoUrl = isDev
         ? 'http://localhost:3001'
         : 'https://book-info-app-dot-books-shop-5230c.uc.r.appspot.com';
     const cartUrl = isDev
         ? 'http://localhost:3002'
         : 'https://cart-dot-books-shop-5230c.uc.r.appspot.com';
+    const paymentUrl = isDev
+        ? 'http://localhost:3003'
+        : 'https://payment-dot-books-shop-5230c.uc.r.appspot.com';
 
     config?.plugins?.push(
         new container.ModuleFederationPlugin({
@@ -42,6 +46,7 @@ export default (env: EnvVariables) => {
             remotes: {
                 bookInfo: `bookInfo@${bookInfoUrl}/remoteEntry.js`,
                 cart: `cart@${cartUrl}/remoteEntry.js`,
+                payment: `payment@${paymentUrl}/remoteEntry.js`,
             },
             shared: getWmfSharedOptions(dependencies),
         }),

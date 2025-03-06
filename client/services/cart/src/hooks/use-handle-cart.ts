@@ -1,4 +1,4 @@
-import { useAddToCartMore, useRemoveFromCart } from '@mryzhkova/packages-shared/api/cart';
+import { useAddToCartMore, useRemoveFromCart } from '@mryzhkova/packages-shared/apollo-client/cart';
 import { setCartData } from '@mryzhkova/packages-shared/utils/cart/set-cart-data';
 
 export const useHandleCart = (id: string, count: number) => {

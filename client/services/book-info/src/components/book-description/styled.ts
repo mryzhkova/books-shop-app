@@ -18,7 +18,7 @@ export const StyledCoverBy = styled.div`
     margin: ${({ theme }) => theme.gaps.m} 0;
 `;
 
-export const CoverByText = styled.div`
+export const StyledCoverByText = styled.div`
     display: flex;
     flex-direction: column;
 `;

@@ -1,4 +1,4 @@
-import { EventMap, IEventBus, ListenerFn } from './types';
+import { type EventMap, type IEventBus, type ListenerFn } from './types';
 
 export class EventBus<T extends EventMap> implements IEventBus<T> {
     private listeners = {} as { [key in keyof T]: Array<ListenerFn<T[key]>> };

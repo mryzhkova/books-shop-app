@@ -1,12 +1,17 @@
 import { Gap } from '@mryzhkova/packages-shared/components/gap';
 import { Text } from '@mryzhkova/packages-shared/components/text';
-import { Book } from '@mryzhkova/packages-shared/types';
 
 import CoverByIcon from '@/assets/avatar.svg';
 
-import { CoverByText, StyledCoverBy, StyledDescription } from './styled';
+import { StyledCoverByText, StyledCoverBy, StyledDescription } from './styled';
 
-type Props = Pick<Book, 'author' | 'title' | 'coverBy' | 'coverByEmail' | 'description'>;
+type Props = {
+    title: string;
+    author: string;
+    coverBy: string;
+    coverByEmail: string;
+    description: string;
+};
 
 export const BookDescription = ({ title, author, coverBy, coverByEmail, description }: Props) => (
     <StyledDescription>
@@ -16,12 +21,12 @@ export const BookDescription = ({ title, author, coverBy, coverByEmail, descript
         </Text>
         <StyledCoverBy>
             <CoverByIcon />
-            <CoverByText>
+            <StyledCoverByText>
                 <Text size='s'>{coverBy}</Text>
                 <Text weight='light' size='xs'>
                     {coverByEmail}
                 </Text>
-            </CoverByText>
+            </StyledCoverByText>
         </StyledCoverBy>
         <Gap size='l' />
         <Text weight='light' tag='p'>

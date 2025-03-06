@@ -3,7 +3,7 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import { ProgressPlugin, type WebpackPluginInstance, DefinePlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import { BuildOptions } from '../types';
+import { type BuildOptions } from '../types';
 
 export const getPlugins = ({ paths, mode, analyzer }: BuildOptions): WebpackPluginInstance[] => {
     const plugins: WebpackPluginInstance[] = [

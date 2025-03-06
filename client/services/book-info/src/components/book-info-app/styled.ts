@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const BookInfoWrapper = styled.div`
+export const StyledBookInfo = styled.div`
     display: flex;
     justify-content: space-evenly;
+    margin-top: ${({ theme }) => theme.gaps['4xl']};
     padding: 0 ${({ theme }) => theme.gaps['3xl']};
 `;
 

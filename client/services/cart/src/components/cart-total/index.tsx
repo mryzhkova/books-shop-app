@@ -1,35 +1,42 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '@mryzhkova/packages-shared/components/button';
 import { Gap } from '@mryzhkova/packages-shared/components/gap';
 import { Text } from '@mryzhkova/packages-shared/components/text';
+import { paymentRoutes } from '@mryzhkova/packages-shared/constants';
 
-import { CartFooter, StyledSubTotal } from './styled';
+import { StyledCartFooter, StyledFooterContent, StyledSubTotal } from './styled';
 
 type Props = {
-    total: string;
+    total: number;
 };
 
 export const CartTotal = ({ total }: Props) => {
-    const handleCheckOut = () => {};
+    const navigate = useNavigate();
+
+    const handleCheckOut = () => {
+        navigate(paymentRoutes.payment);
+    };
 
     return (
-        <CartFooter>
-            <div>
+        <StyledCartFooter>
+            <StyledFooterContent>
                 <StyledSubTotal>
                     <Text size='xl' view='secondary'>
                         Sub-total
                     </Text>
                     <Gap size='5xl' direction='horizontal' />
                     <Text size='xl' view='secondary'>
-                        {total}
+                        {`$ ${total}`}
                     </Text>
                 </StyledSubTotal>
                 <Gap size='m' />
                 <Text weight='light' view='secondary' tag='p'>
                     Tax and shipping cost will be calculated later
                 </Text>
-            </div>
+            </StyledFooterContent>
             <Gap size='5xl' direction='horizontal' />
             <Button onClick={handleCheckOut}>Check-out</Button>
-        </CartFooter>
+        </StyledCartFooter>
     );
 };

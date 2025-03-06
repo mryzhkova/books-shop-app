@@ -1,5 +1,6 @@
 import admin from 'firebase-admin';
 import 'dotenv/config';
+import 'module-alias/register';
 import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';

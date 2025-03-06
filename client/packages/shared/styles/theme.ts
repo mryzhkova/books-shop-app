@@ -1,4 +1,4 @@
-import { DefaultTheme, css, CSSObject, Interpolation } from 'styled-components';
+import { type DefaultTheme, css, type CSSObject, type Interpolation } from 'styled-components';
 
 const fonts = {
     primary: 'Poppins, sans-serif',
@@ -13,6 +13,7 @@ const colors = {
     accent: '#56B280',
     lightBase: '#FFF',
     darkBase: '#000',
+    error: '#f44839',
 } as const;
 
 const gaps = {
@@ -43,6 +44,7 @@ const borderRadius = {
 } as const;
 
 const fontSizes = {
+    '2xs': '10px',
     xs: '12px',
     s: '14px',
     m: '16px',
@@ -97,7 +99,7 @@ export type FontWeight = keyof typeof fontWeight;
 export type FontSize = keyof typeof fontSizes;
 export type BorderRadius = keyof typeof borderRadius;
 
-export interface ThemeType {
+export type ThemeType = {
     fonts: typeof fonts;
     fontSizes: typeof fontSizes;
     fontWeight: typeof fontWeight;
@@ -106,7 +108,7 @@ export interface ThemeType {
     colors: typeof colors;
     media: Media;
     maxLayoutWidth: number;
-}
+};
 
 export const defaultTheme: DefaultTheme = {
     media,

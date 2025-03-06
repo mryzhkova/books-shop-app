@@ -5,4 +5,8 @@ export const StyledCart = styled.div`
         margin: 0 auto;
         max-width: ${`${theme.maxLayoutWidth}px`};
     `}
+
+    ${({ theme }) => theme.media.xl`
+        padding: 0 ${theme.gaps.xs};
+    `};
 `;

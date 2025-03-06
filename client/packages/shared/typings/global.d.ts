@@ -1,4 +1,4 @@
-import { IEventBus, EventMap } from '@mryzhkova/packages-shared/utils/event-bus/types';
+import { type EventMap, type IEventBus } from '../utils/event-bus/types';
 
 declare global {
     interface Window {

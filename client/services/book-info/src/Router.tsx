@@ -1,17 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { ErrorBoundary } from '@mryzhkova/packages-shared/components/error-boundary';
+import { booksRoutes } from '@mryzhkova/packages-shared/constants';
 
 import { BookInfoApp } from '@/components/book-info-app';
 
 const routes = [
     {
-        path: '/books/:id',
-        element: (
-            <ErrorBoundary fallback={<div>Book Info Service Error</div>}>
-                <BookInfoApp />
-            </ErrorBoundary>
-        ),
+        path: `${booksRoutes.books}/:id`,
+        element: <BookInfoApp />,
     },
 ];
 

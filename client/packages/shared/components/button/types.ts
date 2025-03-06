@@ -1,13 +1,19 @@
-import { ReactNode, ButtonHTMLAttributes } from 'react';
+import { type ReactNode, type ButtonHTMLAttributes } from 'react';
 
-export type ButtonView = 'gray' | 'accent' | 'ghost' | 'light';
+export type ButtonView =
+    | 'gray'
+    | 'accent'
+    | 'accent-light'
+    | 'accent-text'
+    | 'text-default'
+    | 'text-secondary'
+    | 'text-primary'
+    | 'link';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     children: ReactNode;
     view?: ButtonView;
     block?: boolean;
-}
-
-export type StyledButtonProps = Omit<ButtonProps, 'children' | 'block'> & {
-    width: string;
 };
+
+export type StyledButtonProps = Omit<ButtonProps, 'children'>;

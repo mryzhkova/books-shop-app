@@ -1,11 +1,13 @@
-import { firestore } from 'firebase-admin';
+import { type Firestore, getFirestore, type CollectionReference } from 'firebase-admin/firestore';
 
-let db: firestore.Firestore;
+let db: Firestore;
 
 export const initDb = (): void => {
-    db = firestore();
+    db = getFirestore();
 };
 
-export const getBooksRef = (): firestore.CollectionReference => db.collection('books');
+export const getBooksRef = (): CollectionReference => db.collection('books');
 
-export const getCartsRef = (): firestore.CollectionReference => db.collection('carts');
+export const getCartsRef = (): CollectionReference => db.collection('carts');
+
+export const getOrdersRef = (): CollectionReference => db.collection('orders');

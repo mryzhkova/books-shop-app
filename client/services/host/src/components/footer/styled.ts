@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const FooterBackground = styled.div`
+export const StyledFooterBackground = styled.div`
     background-color: ${({ theme }) => theme.colors.darkPrimary};
 `;
 
-export const FooterContent = styled.div`
+export const StyledFooter = styled.div`
     margin: 0 auto;
     height: 380px;
     display: flex;
@@ -23,7 +23,7 @@ export const FooterContent = styled.div`
     `};
 `;
 
-export const Links = styled.div`
+export const StyledLinks = styled.div`
     display: flex;
 
     ${({ theme }) => theme.media.md`
@@ -33,13 +33,13 @@ export const Links = styled.div`
     `};
 `;
 
-export const LinkItem = styled.div`
+export const StyledLinkItem = styled.div`
     ${({ theme }) => theme.media.md`
         display: none;
     `};
 `;
 
-export const LinksGroup = styled.div`
+export const StyledLinksGroup = styled.div`
     display: flex;
     flex-direction: column;
 

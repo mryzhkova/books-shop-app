@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const HeaderWrapper = styled.div`
+export const StyledHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,17 +12,10 @@ export const HeaderWrapper = styled.div`
     `}
 `;
 
-export const NavWrapper = styled.nav`
+export const StyledNav = styled.nav`
     display: flex;
 
     ${({ theme }) => theme.media.md`
         display: none;
     `};
-`;
-
-export const HeaderLine = styled.div`
-    width: 100%;
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.accent};
-    opacity: 0.5;
 `;

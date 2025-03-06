@@ -1,6 +1,6 @@
 import { type Configuration } from 'webpack';
 
-import { BuildOptions } from '../types';
+import { type BuildOptions } from '../types';
 
 import { getDevServer } from './getDevServer';
 import { getLoaders } from './getLoaders';

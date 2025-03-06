@@ -1,6 +1,6 @@
-import { FC, SVGProps, ButtonHTMLAttributes } from 'react';
+import { type FC, type SVGProps, type ButtonHTMLAttributes } from 'react';
 
-import { Color } from '../../styles/theme';
+import { type Color } from '../../styles/theme';
 
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     Icon: FC<SVGProps<SVGSVGElement>>;

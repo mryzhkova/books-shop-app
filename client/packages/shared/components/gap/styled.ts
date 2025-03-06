@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { StyledGapProps } from './types';
+import { type StyledGapProps } from './types';
 
 export const HorizontalGap = styled.span<StyledGapProps>`
     display: inline-block;

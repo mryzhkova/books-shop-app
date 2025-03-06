@@ -1,4 +1,4 @@
-import { Dependencie } from '../types';
+import { type Dependencie } from '../types';
 
 export const getWmfSharedOptions = (deps: Dependencie) => ({
     ...deps,
@@ -27,4 +27,14 @@ export const getWmfSharedOptions = (deps: Dependencie) => ({
         singleton: true,
         eager: true,
     },
+    graphql: {
+        requiredVersion: deps.graphql,
+        singleton: true,
+        eager: true,
+    },
+    '@emotion/is-prop-valid': {
+        requiredVersion: deps['@emotion/is-prop-valid'],
+        singleton: true,
+        eager: true,
+    }
 });
